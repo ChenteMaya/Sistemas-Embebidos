@@ -1,0 +1,83 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package pmovi;
+
+import java.io.BufferedReader; 
+import java.io.InputStreamReader; 
+import java.util.ArrayList; 
+
+/**
+ *
+ * @author bvmayam@utn.edu.ec
+ */
+public class PMovi {
+    
+    //variables
+    public static int length;
+    public static int i, si, no,fil,col, t=0;
+    public static String ip;
+    public static String s = null; 
+    public static int matrizm;
+    
+     static void commands(ArrayList<String> commandList)  
+                                           throws Exception 
+    {  
+        // creating the sub process, execute system command 
+        ProcessBuilder build = new ProcessBuilder(commandList); 
+        Process process = build.start(); 
+          
+        // to read the output 
+        BufferedReader input = new BufferedReader(new InputStreamReader 
+                                   (process.getInputStream())); 
+        BufferedReader Error = new BufferedReader(new InputStreamReader 
+                                   (process.getErrorStream())); 
+        
+          
+        System.out.println("Standard output: "); 
+        while((s = input.readLine()) != null) 
+        { 
+            System.out.println(s);
+              length = s.length();
+            System.out.println(length);
+            if (length==58){
+           matrizm = new matrizm[fil][col];
+            }else{
+            
+            }
+
+        } 
+        System.out.println("error (if any): "); 
+        while((s = Error.readLine()) != null) 
+        { 
+            System.out.println(s); 
+            
+        } 
+    }
+    public static void main(String[] args) throws Exception 
+    {  
+        
+        // creating list for commands 
+        for (i=20; i<99;i++){
+        ArrayList<String> commandList = new ArrayList<String>(); 
+          
+        commandList.add("ping"); 
+        // Envia la ip
+        
+        // la ip asignada    
+        commandList.add("172.17.1."+i); 
+        ip="172.17.1."+i;
+       //se guarda en variable
+        PMovi.commands(commandList); 
+        
+     
+    }
+        i=20;
+        //if (commandList.add("ping"))^`
+    } 
+    
+        
+} 
